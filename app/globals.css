@@ -2,88 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --accent: #6c63ff;
-  --accent-hover: #574fd6;
-  --bg-900: #0a0a0f;
-  --bg-800: #111118;
-  --bg-700: #1a1a24;
-  --bg-600: #22222f;
-  --bg-500: #2e2e3e;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html,
-body {
+html, body {
   height: 100%;
   overflow: hidden;
-  background: var(--bg-900);
-  color: #e2e2f0;
+  font-family: 'Inter', sans-serif;
 }
 
-/* ---- Scrollbars ---- */
-::-webkit-scrollbar        { width: 6px; height: 6px; }
-::-webkit-scrollbar-track  { background: var(--bg-800); }
-::-webkit-scrollbar-thumb  { background: var(--bg-500); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+/* Custom scrollbar for the right panel */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.7);
+}
 
-/* ---- Range Inputs ---- */
-input[type='range'] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 4px;
-  border-radius: 2px;
-  background: #2e2e3e;
-  outline: none;
+/* Smooth transitions on all buttons */
+button {
   cursor: pointer;
-}
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-  border: 2px solid #0a0a0f;
-  box-shadow: 0 0 0 1px var(--accent);
-  transition: transform 0.15s ease;
-}
-input[type='range']::-webkit-slider-thumb:hover {
-  transform: scale(1.25);
-}
-input[type='range']::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-  border: 2px solid #0a0a0f;
+  transition: all 0.15s ease;
 }
 
-/* ---- Canvas checkerboard bg ---- */
-.canvas-checkerboard {
-  background-color: #fff;
-  background-image:
-    linear-gradient(45deg, #ccc 25%, transparent 25%),
-    linear-gradient(-45deg, #ccc 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #ccc 75%),
-    linear-gradient(-45deg, transparent 75%, #ccc 75%);
-  background-size: 16px 16px;
-  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+/* Prevent text selection during drag */
+canvas {
+  user-select: none;
 }
 
-/* ---- Animations ---- */
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fade-slide-in {
-  animation: fadeSlideIn 0.25s ease forwards;
-}
